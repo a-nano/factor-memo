@@ -140,6 +140,7 @@ Number 3
 <br><br>
 
 ## with-file-reader
+```factor
 IN: scratchpad auto-use USING: io kernel ;
 IN: scratchpad auto-use "sample.txt" utf8 [ [ print ] each-line ] with-file-reader
 Number 1
