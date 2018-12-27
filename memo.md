@@ -9,7 +9,7 @@ Added "fry" vocabulary to search path
 ```
 
 (http://docs.factorcode.org/content/word-auto-use,parser.html)
-<br>
+<br><br>
 
 ## Wordの定義を参照する
 \とseeを組み合わせる。
