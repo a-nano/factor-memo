@@ -149,3 +149,76 @@ Number 3
 ```
 (http://docs.factorcode.org/content/word-with-file-reader,io.files.html)
 <br><br>
+
+## factor regexp
+(http://docs.factorcode.org/content/article-regexp-intro.html)
+<br><br>
+
+## R/の後にスペースを！
+```factor
+IN: scratchpad auto-use "foo bar" R/ foo// "bar" re-replace .
+1: Note:
+Added "regexp" vocabulary to search path
+"bar bar"
+```
+<br>
+
+## regexp words
+sample.txt
+```
+% less sample.txt
+Number 1 stack
+Number 2 words
+Number 3 regex
+```
+<br>
+
+### re-contains? / matches?
+ファイルの内容をフィルターしてみる。
+```factor
+IN: scratchpad auto-use "./sample.txt" ascii file-lines [ R/ regex/ re-contains? ] filter
+1: Note:
+Added "io.encodings.ascii" vocabulary to search path
+
+--- Data stack:
+{ "Number 3 regex" }
+```
+`re-contains?`はその行に正規表現がマッチする文字列が含まれているか？をチェックするから"Number 3 regex"を取得できる。
+行にマッチさせるというコンンテキストでは`matches?`のこの使い方はうまくいかない。
+```factor
+IN: scratchpad auto-use "./sample.txt" ascii file-lines [ R/ regex/ matches? ] filter .
+{ }
+```
+`matches?`を使うのであれば、行全体にマッチしなければいけないから、正しくはこう。
+```factor
+IN: scratchpad auto-use "./sample.txt" ascii file-lines [ R/ ^.+?regex.*?$/ matches? ] filter .
+{ "Number 3 regex" }
+```
+つまりsed的な使い方をするなら`re-contains?が適切ということ。
+<br><br>
+
+## re-replace
+
+(http://docs.factorcode.org/content/article-regexp-options.html)
+上のページを見ると、gがない・・・。
+案の定、これは動かない。
+```factor
+IN: scratchpad auto-use "foo foo bar baz" R/ foo/g "hoge" re-replace .
+1: "foo foo bar baz" R/ foo/g "hoge" re-replace.
+                     ^
+nonexistent-option
+name 103
+
+Type :help for debuging help.
+```
+なるほど`re-replace`はデフォルトでグローバルマッチのようだ。
+
+```factor
+IN: scratchpad auto-use "foo foo bar baz" R/ foo/ "hoge" re-replace
+
+--- Data stack:
+"hoge hoge bar baz"
+```
+(http://docs.factorcode.org/content/word-re-replace,regexp.html)
+<br>
+じゃあ、最初のマッチだけ置換するには？
