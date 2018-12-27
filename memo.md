@@ -127,3 +127,15 @@ outer
 
 (http://oss.infoscience.co.jp/factor/docs.factorcode.org/content/article-cookbook-variables.html)
 <br><br>
+
+## with-file-writer
+```factor
+IN: scratchpad auto-use USE: io.encodings.utf8
+IN: scratchpad auto-use "sample.txt" utf8 [ { 1 2 3 } [ "Number" write number>string print ] each ] with-file-writer
+
+% less sample.txt
+Number 1
+Number 2
+Number 3
+```
+<br><br>

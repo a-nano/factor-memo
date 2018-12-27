@@ -1,4 +1,4 @@
-USE: io
+USING: io;
 IN: hello
 
 : hello ( -- )
@@ -15,3 +15,4 @@ MAIN: hello
 ! Hello, Factor-Script!
 
 ! なお、コマンドプロンプトでは日本語はutf8でもsjisでも文字化け
+
