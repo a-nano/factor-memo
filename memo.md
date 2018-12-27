@@ -35,7 +35,7 @@ IN: scratchpad auto-use .s
 2
 3
 ```
-<br><br>
+<br>
 
 ## if
 ifはTOSの真偽を評価してクォーテーションを評価する。
@@ -60,7 +60,7 @@ T
 IN: scratchpad auto-use f [ "T" ] [ "F" ] if print
 F
 ```
-<br><br>
+<br>
 
 ## times
 TOSの数値を回数としてクォーテーションを繰りかえし評価する。
@@ -70,7 +70,7 @@ I might be wrong.
 I might be wrong.
 I might be wrong.
 ```
-<br><br>
+<br>
 
 ## each
 各列の各要素に対して処理を実行したいときは`each`を使う。
@@ -101,7 +101,7 @@ IN: scratchpad auto-use 10 { 1 2 3 } [ over swap - . ] each
 IN: scratchpad auto-use { 1 2 3 } [ sq ] map .
 { 1 4 9 }
 ```
-<br><br>
+<br>
 
 ## filter
 `filter`は配列をクォーテーションでフィルターする。
@@ -109,7 +109,6 @@ IN: scratchpad auto-use { 1 2 3 } [ sq ] map .
 IN: scratchpad auto-use { 0 1 2 } [ zero? not ] filter .
 { 1 2 }
 ```
-
 (http://oss.infoscience.co.jp/factor/docs.factorcode.org/content/article-cookbook-combinators.html)
 <br><br>
 
@@ -128,7 +127,7 @@ outer
 ## with-file-writer
 ```factor
 IN: scratchpad auto-use USE: io.encodings.utf8
-IN: scratchpad auto-use "sample.txt" utf8 [ { 1 2 3 } [ "Number" write number>string print ] each ] with-file-writer
+IN: scratchpad auto-use "sample.txt" utf8 [ { 1 2 3 } [ "Number " write number>string print ] each ] with-file-writer
 
 % less sample.txt
 Number 1
@@ -136,5 +135,16 @@ Number 2
 Number 3
 ```
 `print`にはstrを渡す必要があるので、`number>string`を使う。
+
 (http://docs.factorcode.org/content/word-with-file-writer%2Cio.files.html)
+<br><br>
+
+## with-file-reader
+IN: scratchpad auto-use USING: io kernel ;
+IN: scratchpad auto-use "sample.txt" utf8 [ [ print ] each-line ] with-file-reader
+Number 1
+Number 2
+Number 3
+```
+(http://docs.factorcode.org/content/word-with-file-reader,io.files.html)
 <br><br>
