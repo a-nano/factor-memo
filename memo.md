@@ -7,7 +7,6 @@ IN: scratchpad auto-use 10 '[ 10 sq _ / ] call .
 Added "fry" vocabulary to search path
 10
 ```
-
 (http://docs.factorcode.org/content/word-auto-use,parser.html)
 <br><br>
 
@@ -19,7 +18,6 @@ USING: kernel;
 IN: math
 :sq ( x -- y ) dup * ; inline
 ```
-
 (http://docs.factorcode.org/content/word-see,see.html)
 <br><br>
 
@@ -124,7 +122,6 @@ IN: scratchpad auto-use "outer" foo set [ "inner" foo set foo get print ] with-s
 inner
 outer
 ```
-
 (http://oss.infoscience.co.jp/factor/docs.factorcode.org/content/article-cookbook-variables.html)
 <br><br>
 
@@ -138,4 +135,6 @@ Number 1
 Number 2
 Number 3
 ```
+`print`にはstrを渡す必要があるので、`number>string`を使う。
+(http://docs.factorcode.org/content/word-with-file-writer%2Cio.files.html)
 <br><br>
