@@ -21,3 +21,20 @@ IN: math
 ```
 
 (http://docs.factorcode.org/content/word-see,see.html)
+<br><br>
+
+## Stack‚Ì’†‚ğŒ©‚é‚¾‚¯
+Stack‚Ì’†‚ğ‚¢‚¶‚ç‚¸‚ÉŒ©‚é‚¾‚¯‚È‚ç`.s`‚ğg‚¤B
+```factor
+IN: scratchpad auto-use 1 2 3
+
+---Data stack:
+1
+2
+3
+IN: scratchpad auto-use .s
+1
+2
+3
+```
+<br><br>
